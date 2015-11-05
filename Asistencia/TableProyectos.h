@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelBienvenida;
 @property (nonatomic, strong) NSString* stringBienvenida;
 @property NSInteger numberRow;
+@property (strong, nonatomic) NSArray *objetoListaAlumnos;
+@property (strong, nonatomic) NSArray *objetoListaBeneficiarios;
 
 @end

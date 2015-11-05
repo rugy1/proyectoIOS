@@ -83,6 +83,8 @@
         Proyectos *proyect = self.listaProyectos[indexPath.row];
         NSArray *assistAlumnos = [proyect alumnosEncargados];
         NSArray *assistBenef = [proyect beneficiarios];
+        [[segue destinationViewController] setListaAsistenciaAlumnos:assistAlumnos];
+        [[segue destinationViewController] setListaAsistenciaBeneficiarios:assistBenef];
         assistAlumnos = [assistAlumnos arrayByAddingObjectsFromArray:assistBenef];
         [[segue destinationViewController] setListaAsistencia:assistAlumnos];
         [[segue destinationViewController] setStringAsistenciaProyecto:[proyect nombreProyecto]];
@@ -91,6 +93,10 @@
 }
 
 - (IBAction)unwindTableAsistencia:(UIStoryboardSegue *) segue{
+    Proyectos *proyectModified = self.listaProyectos[self.numberRow];
+    [proyectModified setAlumnosEncargados:self.objetoListaAlumnos];
+    [proyectModified setBeneficiarios:self.objetoListaBeneficiarios];
+    
    // self.listaProyectos[self.numberRow] = [self]
     //[self.tableView reloadData];
     //Actualizar y notificar guardado de asistencia///////////////////////

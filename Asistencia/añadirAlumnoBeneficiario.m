@@ -35,8 +35,14 @@
     // Pass the selected object to the new view controller.
     
     if (sender == self.saving) {
-        self.alumnos = [self.alumnos arrayByAddingObject:self.nombreAlumno.text];
-        [[segue destinationViewController] setListaAsistencia:self.alumnos];
+        if ([self.tipoAlumno.text isEqualToString:@"Alumno"]) {
+            self.alumnos = [self.alumnos arrayByAddingObject:self.nombreAlumno.text];
+            [[segue destinationViewController] setListaAsistenciaAlumnos:self.alumnos];
+        }
+        else if([self.tipoAlumno.text isEqualToString:@"Beneficiario"]){
+            self.beneficiarios = [self.beneficiarios arrayByAddingObject:self.nombreAlumno.text];
+            [[segue destinationViewController] setListaAsistenciaBeneficiarios:self.beneficiarios];
+        }
     }
 }
 

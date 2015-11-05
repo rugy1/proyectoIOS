@@ -135,7 +135,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="IW3-ke-UVN">
-                        <barButtonItem key="leftBarButtonItem" title="Guardar" id="HAt-gA-Xg4"/>
+                        <barButtonItem key="leftBarButtonItem" title="Guardar" id="HAt-gA-Xg4">
+                            <connections>
+                                <segue destination="lMI-kv-Bh6" kind="unwind" unwindAction="unwindTableAsistencia:" id="irH-mf-WMp"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="sxF-5Z-Wh6">
                             <connections>
                                 <segue destination="9Dm-tq-Cb1" kind="show" identifier="añadiendo" id="JsO-hV-fEz"/>
@@ -149,6 +153,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glz-Fk-53q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="lMI-kv-Bh6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="876.5" y="-418.5"/>
         </scene>
