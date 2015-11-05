@@ -110,6 +110,7 @@
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      if ([[segue identifier] isEqualToString:@"añadiendo"]) {
+         [[segue destinationViewController] setStringAsistenciaProyecto:self.title];
          [[segue destinationViewController] setAlumnos:self.listaAsistenciaAlumnos];
          [[segue destinationViewController] setBeneficiarios:self.listaAsistenciaBeneficiarios];
          //[[segue destinationViewController] setStringAsistenciaProyecto:[proyect nombreProyecto]];

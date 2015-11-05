@@ -37,15 +37,13 @@
 - (IBAction)iniciarSesion:(id)sender {
    
     PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    
     [query whereKey:@"username" equalTo:self.userTF.text];
     [query whereKey:@"password" equalTo:self.psswdTF.text];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.;
-
             if(!objects.count==0){
-            self.stringPassword =self.psswdTF.text;
-            self.stringUsername= self.userTF.text;
                 [self performSegueWithIdentifier:@"admin" sender:self];}
             // Do something with the found objects
         } else {
