@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "TableProyectos.h"
 
+
 @interface ViewController ()
 
 @end
@@ -17,19 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    PFObject *admin1= [PFObject objectWithClassName:@"Rogelio"];
-    admin1[@"username"] = @"adminMaster";
-    admin1[@"password"] = @"MasterAdmin";
-    PFObject *alumno1= [PFObject objectWithClassName:@"Andres"];
-    alumno1[@"username"] = @"alumno1";
-    alumno1[@"password"] = @"alumno1";
-    self.listaUsuarios= [[NSArray alloc] initWithObjects:admin1, alumno1, nil];
-    PFObject *listaUsers= [PFObject objectWithClassName:@"Usuarios"];
-    listaUsers[@"lista"] = self.listaUsuarios;
     
-    
-    [listaUsers saveInBackground];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,19 +35,26 @@
 }
 
 - (IBAction)iniciarSesion:(id)sender {
-    //Query que obtiene de DB el usuario y contraseña
+   
     PFQuery *query = [PFQuery queryWithClassName:@"User"];
-    [query getObjectInBackgroundWithId:@"gM9vddWj5P" block:^(PFObject *tmp, NSError *error) {
-        // Do something with the returned PFObject in the gameScore variable.
-        self.listaObtenida = tmp[@"lista"];
-        self.userAtIndex = [self.listaObtenida objectAtIndex:0];
-        self.stringUsername = self.userAtIndex[@"username"];
-        self.stringPassword = self.userAtIndex[@"password"];
-        //NSLog(@"%@", gameScore);
+    [query whereKey:@"username" equalTo:self.userTF.text];
+    [query whereKey:@"password" equalTo:self.psswdTF.text];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.;
+
+            if(!objects.count==0){
+            self.stringPassword =self.psswdTF.text;
+            self.stringUsername= self.userTF.text;
+                [self performSegueWithIdentifier:@"admin" sender:self];}
+            // Do something with the found objects
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
     }];
-    if ([self.userTF.text isEqualToString: self.stringUsername] && [self.psswdTF.text isEqualToString:self.stringPassword]) {
-        [self performSegueWithIdentifier:@"admin" sender:self];
-    }
+    
+    
     if ([self.userTF.text isEqualToString:@"user"] && [self.psswdTF.text isEqualToString:@"user"]) {
         [self performSegueWithIdentifier:@"user" sender:self];
     }
