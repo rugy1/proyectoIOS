@@ -21,46 +21,17 @@
     if (_listaAsistencia != newListaAsistencia) {
         _listaAsistencia = newListaAsistencia;
         
-        // Update the view.
-       // [self configureView];
     }
 }
-/*
-- (void)configureView {
-    // Update the user interface for the detail item.
-    if (self.listaAsistencia) {
-        Proyectos *proyect = self.listaAsistencia;
-        self.detailDescriptionLabel.numberOfLines = 3;
-        NSString *str = [[NSString alloc] initWithFormat:@"%@ \n%@ \n%d", [contact nombre], [contact oficina], [contact telefono]];
-        self.detailDescriptionLabel.text = str;
-        
-        self.listaAsistencia =
-        
-    }
-}*/
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.stringAsistenciaProyecto;
-    //self.labelAsistencia.text = self.stringAsistenciaProyecto;
-    //UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(guardado)];
-    //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(adding)];
-    
-    //self.navigationItem.rightBarButtonItem = saveButton;
-    //self.navigationItem.rightBarButtonItem = addButton;
 
-    
-   // self.tableView.tableFooterView = self.buttonSaving;
 }
 
-/*- (void)adding{
-    //[[self navigationController] popViewControllerAnimated:YES];
-    
-}
 
-- (void)guardado{
-    [[self navigationController] popViewControllerAnimated:YES];
-}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -70,13 +41,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return self.listaAsistencia.count;
 }

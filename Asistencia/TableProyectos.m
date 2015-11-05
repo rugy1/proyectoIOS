@@ -41,12 +41,6 @@
     self.listaProyectos = [[NSMutableArray alloc] initWithObjects:proyecto1, proyecto2, nil];
     self.vacioAlumnos = [[NSArray alloc] initWithObjects:nil];
     self.vacioBenef = [[NSArray alloc] initWithObjects:nil];
- 
-    
-    ///////Parse////////////
-    
-    /*PFObject *listaProyectosParse= [PFObject objectWithClassName:@"Proyectos"];
-    listaProyectosParse[@"list"] = self.listaProyectos;*/
     
 
 }
@@ -94,9 +88,6 @@
         [[segue destinationViewController] setStringAsistenciaProyecto:[proyect nombreProyecto]];
         self.numberRow = indexPath.row;
     }
-    /*else if([[segue identifier] isEqualToString:@"adding"]){
-        
-    }*/
 }
 
 - (IBAction)unwindTableAsistencia:(UIStoryboardSegue *) segue{
@@ -104,8 +95,6 @@
     [proyectModified setAlumnosEncargados:self.objetoListaAlumnos];
     [proyectModified setBeneficiarios:self.objetoListaBeneficiarios];
     
-   // self.listaProyectos[self.numberRow] = [self]
-    //[self.tableView reloadData];
     //Actualizar y notificar guardado de asistencia///////////////////////
 }
 
