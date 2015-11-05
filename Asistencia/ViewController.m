@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    PFObject *admin1= [PFObject objectWithClassName:@"Rogelio"];
+   /* PFObject *admin1= [PFObject objectWithClassName:@"Rogelio"];
     admin1[@"username"] = @"adminMaster";
     admin1[@"password"] = @"MasterAdmin";
     PFObject *alumno1= [PFObject objectWithClassName:@"Andres"];
@@ -27,8 +27,7 @@
     PFObject *listaUsers= [PFObject objectWithClassName:@"Usuarios"];
     listaUsers[@"lista"] = self.listaUsuarios;
     
-    
-    [listaUsers saveInBackground];
+    [listaUsers saveInBackground];*/
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -47,7 +46,7 @@
 
 - (IBAction)iniciarSesion:(id)sender {
     //Query que obtiene de DB el usuario y contraseña
-    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    /*PFQuery *query = [PFQuery queryWithClassName:@"User"];
     [query getObjectInBackgroundWithId:@"gM9vddWj5P" block:^(PFObject *tmp, NSError *error) {
         // Do something with the returned PFObject in the gameScore variable.
         self.listaObtenida = tmp[@"lista"];
@@ -55,8 +54,8 @@
         self.stringUsername = self.userAtIndex[@"username"];
         self.stringPassword = self.userAtIndex[@"password"];
         //NSLog(@"%@", gameScore);
-    }];
-    if ([self.userTF.text isEqualToString: self.stringUsername] && [self.psswdTF.text isEqualToString:self.stringPassword]) {
+    }];*/
+    if ([self.userTF.text isEqualToString:self.stringUsername] && [self.psswdTF.text isEqualToString:self.stringPassword]) {
         [self performSegueWithIdentifier:@"admin" sender:self];
     }
     if ([self.userTF.text isEqualToString:@"user"] && [self.psswdTF.text isEqualToString:@"user"]) {

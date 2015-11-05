@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="f7s-W7-Jqq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -48,7 +48,6 @@
                                 </state>
                                 <connections>
                                     <action selector="iniciarSesion:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eX3-oo-hb0"/>
-                                    <segue destination="f7s-W7-Jqq" kind="presentation" identifier="admin" id="h4N-Oo-4Sw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUf-Xa-9nc">
@@ -64,6 +63,7 @@
                     <connections>
                         <outlet property="psswdTF" destination="En1-We-sXj" id="aY5-pY-tEM"/>
                         <outlet property="userTF" destination="hky-bC-ZsR" id="73l-Sc-0aX"/>
+                        <segue destination="f7s-W7-Jqq" kind="presentation" identifier="admin" id="eXB-Zs-BLb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -135,7 +135,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="IW3-ke-UVN">
-                        <barButtonItem key="leftBarButtonItem" title="Guardar" id="HAt-gA-Xg4"/>
+                        <barButtonItem key="leftBarButtonItem" title="Guardar" id="HAt-gA-Xg4">
+                            <connections>
+                                <segue destination="lMI-kv-Bh6" kind="unwind" unwindAction="unwindTableAsistencia:" id="irH-mf-WMp"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="sxF-5Z-Wh6">
                             <connections>
                                 <segue destination="9Dm-tq-Cb1" kind="show" identifier="añadiendo" id="JsO-hV-fEz"/>
@@ -149,6 +153,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glz-Fk-53q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="lMI-kv-Bh6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="876.5" y="-418.5"/>
         </scene>

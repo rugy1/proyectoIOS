@@ -110,15 +110,19 @@
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      if ([[segue identifier] isEqualToString:@"añadiendo"]) {
-         [[segue destinationViewController] setAlumnos:self.listaAsistencia];
+         [[segue destinationViewController] setAlumnos:self.listaAsistenciaAlumnos];
+         [[segue destinationViewController] setBeneficiarios:self.listaAsistenciaBeneficiarios];
          //[[segue destinationViewController] setStringAsistenciaProyecto:[proyect nombreProyecto]];
      }
-    /* if (sender == self.saving) {
-         [[segue destinationViewController] setListaAsistencia:self.alumnos];
-     }*/
+     if (sender == self.saving) {
+         [[segue destinationViewController] setObjetoListaAlumnos:self.listaAsistenciaAlumnos];
+         [[segue destinationViewController] setObjetoListaBeneficiarios:self.listaAsistenciaBeneficiarios];
+     }
  }
 
 - (IBAction)unwindAñadirAlumnoBeneficiario:(UIStoryboardSegue *) segue{
+    self.listaAsistencia = self.listaAsistenciaAlumnos;
+    self.listaAsistencia = [self.listaAsistencia arrayByAddingObjectsFromArray:self.listaAsistenciaBeneficiarios];
     [self.tableView reloadData];
 }
 
