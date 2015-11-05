@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *userTF;
+@property (weak, nonatomic) IBOutlet UITextField *psswdTF;
+- (IBAction)iniciarSesion:(id)sender;
+
+@property (strong, nonatomic) NSArray *listaUsuarios;
+@property (strong, nonatomic) NSArray *listaObtenida;
+@property (nonatomic, strong) NSString* stringUsername;
+@property (nonatomic, strong) NSString* stringPassword;
+@property (nonatomic, strong) PFObject* userAtIndex;
 
 
 @end
