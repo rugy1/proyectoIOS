@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -102,7 +102,13 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="TableProyectos" id="5qU-wu-xdf"/>
+                    <navigationItem key="navigationItem" title="TableProyectos" id="5qU-wu-xdf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="srm-6W-byh">
+                            <connections>
+                                <segue destination="wAI-Su-nS5" kind="show" identifier="adding" id="EFs-GD-7EX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="labelBienvenida" destination="qxa-hT-Y2V" id="dbk-6J-cJg"/>
@@ -111,6 +117,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DcJ-aE-tLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="341.5" y="-418.5"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="2qn-EG-82K">
+            <objects>
+                <viewController id="wAI-Su-nS5" customClass="an_adirProyecto" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KSD-Mk-VIV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bpt-ad-I96"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FJy-nU-tni">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre Proyecto" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4MV-fh-FTR">
+                                <rect key="frame" x="134" y="148" width="135" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Was-r0-sN4">
+                                <rect key="frame" x="153" y="195" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="eCl-Ph-YY1">
+                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="WvJ-Hk-C7L">
+                            <connections>
+                                <segue destination="bEp-C5-i4U" kind="unwind" unwindAction="unwindAñadirProyecto:" id="UFY-L5-f2h"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="nombreProyecto" destination="Was-r0-sN4" id="0Cg-zb-xPu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XIN-GK-Okl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bEp-C5-i4U" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="341.5" y="413.5"/>
         </scene>
         <!--Title-->
         <scene sceneID="DK8-Dd-U8j">

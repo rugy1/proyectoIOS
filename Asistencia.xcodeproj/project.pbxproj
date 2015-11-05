@@ -14,6 +14,7 @@
 		A112FDB81BEAE4C000D85678 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A112FDB11BEAE4C000D85678 /* ParseUI.framework */; };
 		A112FDB91BEAE4C000D85678 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A112FDB21BEAE4C000D85678 /* Bolts.framework */; };
 		A112FDBA1BEAE4C000D85678 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A112FDB31BEAE4C000D85678 /* Parse.framework */; };
+		E95629D81BEB231B00243B5E /* añadirProyecto.m in Sources */ = {isa = PBXBuildFile; fileRef = E95629D71BEB231B00243B5E /* añadirProyecto.m */; };
 		E95F1CA51BEA9026009F18FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95F1CA41BEA9026009F18FF /* AudioToolbox.framework */; };
 		E95F1CA71BEA902C009F18FF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95F1CA61BEA902C009F18FF /* CFNetwork.framework */; };
 		E95F1CA91BEA903B009F18FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95F1CA81BEA903B009F18FF /* CoreGraphics.framework */; };
@@ -57,6 +58,8 @@
 		A112FDB11BEAE4C000D85678 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = ../parseFrameWork/ParseUI.framework; sourceTree = "<group>"; };
 		A112FDB21BEAE4C000D85678 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../parseFrameWork/Bolts.framework; sourceTree = "<group>"; };
 		A112FDB31BEAE4C000D85678 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../parseFrameWork/Parse.framework; sourceTree = "<group>"; };
+		E95629D61BEB231B00243B5E /* añadirProyecto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "añadirProyecto.h"; sourceTree = "<group>"; };
+		E95629D71BEB231B00243B5E /* añadirProyecto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "añadirProyecto.m"; sourceTree = "<group>"; };
 		E95F1CA41BEA9026009F18FF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E95F1CA61BEA902C009F18FF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E95F1CA81BEA903B009F18FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -188,6 +191,8 @@
 				E95F1CC21BEAC7F8009F18FF /* añadirAlumnoBeneficiario.m */,
 				E9D833A61BD95CC900FA8DD8 /* TableAsistencia.h */,
 				E9D833A71BD95CC900FA8DD8 /* TableAsistencia.m */,
+				E95629D61BEB231B00243B5E /* añadirProyecto.h */,
+				E95629D71BEB231B00243B5E /* añadirProyecto.m */,
 				E9D833081BD55B8D00FA8DD8 /* TableProyectos.h */,
 				E9D833091BD55B8D00FA8DD8 /* TableProyectos.m */,
 				E9D833A31BD9527900FA8DD8 /* Proyectos.h */,
@@ -328,6 +333,7 @@
 				E9D833A51BD9527900FA8DD8 /* Proyectos.m in Sources */,
 				E95F1CC31BEAC7F8009F18FF /* añadirAlumnoBeneficiario.m in Sources */,
 				E9D832EB1BD52A8400FA8DD8 /* ViewController.m in Sources */,
+				E95629D81BEB231B00243B5E /* añadirProyecto.m in Sources */,
 				E9D833A81BD95CC900FA8DD8 /* TableAsistencia.m in Sources */,
 				E9D832E81BD52A8400FA8DD8 /* AppDelegate.m in Sources */,
 				E9D832E51BD52A8400FA8DD8 /* main.m in Sources */,

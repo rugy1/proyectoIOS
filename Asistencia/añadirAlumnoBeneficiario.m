@@ -38,10 +38,18 @@
         if ([self.tipoAlumno.text isEqualToString:@"Alumno"]) {
             self.alumnos = [self.alumnos arrayByAddingObject:self.nombreAlumno.text];
             [[segue destinationViewController] setListaAsistenciaAlumnos:self.alumnos];
+            PFObject *nuevo = [PFObject objectWithClassName:@"Empleado"];
+            nuevo[@"nombre"] = self.nombreAlumno.text;
+            nuevo[@"proyecto"] = self.stringAsistenciaProyecto;
+            [nuevo saveInBackground];
         }
         else if([self.tipoAlumno.text isEqualToString:@"Beneficiario"]){
             self.beneficiarios = [self.beneficiarios arrayByAddingObject:self.nombreAlumno.text];
             [[segue destinationViewController] setListaAsistenciaBeneficiarios:self.beneficiarios];
+            PFObject *nuevo = [PFObject objectWithClassName:@"Beneficiario"];
+            nuevo[@"nombre"] = self.nombreAlumno.text;
+            nuevo[@"proyecto"] = self.stringAsistenciaProyecto;
+            [nuevo saveInBackground];
         }
     }
 }

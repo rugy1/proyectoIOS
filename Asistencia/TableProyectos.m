@@ -18,6 +18,8 @@
 @property NSArray *alumnosEstrella;
 @property NSArray *benefCaracol;
 @property NSArray *benefEstrella;
+@property NSArray *vacioAlumnos;
+@property NSArray *vacioBenef;
 
 
 @end
@@ -37,12 +39,8 @@
     Proyectos *proyecto1 = [[Proyectos alloc] initWithNombreProyecto:@"Caracol" alumnosEncargados:_alumnosCaracol beneficiarios:_benefCaracol];
     Proyectos *proyecto2 = [[Proyectos alloc] initWithNombreProyecto:@"Estrella" alumnosEncargados:_alumnosEstrella beneficiarios:_benefEstrella];
     self.listaProyectos = [[NSMutableArray alloc] initWithObjects:proyecto1, proyecto2, nil];
- 
-    
-    ///////Parse////////////
-    
-    /*PFObject *listaProyectosParse= [PFObject objectWithClassName:@"Proyectos"];
-    listaProyectosParse[@"list"] = self.listaProyectos;*/
+    self.vacioAlumnos = [[NSArray alloc] initWithObjects:nil];
+    self.vacioBenef = [[NSArray alloc] initWithObjects:nil];
     
 
 }
@@ -97,9 +95,13 @@
     [proyectModified setAlumnosEncargados:self.objetoListaAlumnos];
     [proyectModified setBeneficiarios:self.objetoListaBeneficiarios];
     
-   // self.listaProyectos[self.numberRow] = [self]
-    //[self.tableView reloadData];
     //Actualizar y notificar guardado de asistencia///////////////////////
+}
+
+- (IBAction)unwindAñadirProyecto:(UIStoryboardSegue *) segue{
+    Proyectos *project = [[Proyectos alloc] initWithNombreProyecto:self.stringNewProject alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
+    [self.listaProyectos addObject:project];
+    [self.tableView reloadData];
 }
 
 @end
