@@ -11,7 +11,6 @@
 
 @interface TableAsistencia : UITableViewController
 
-@property (strong, nonatomic) NSArray *listaAsistencia;
 @property (strong, nonatomic) NSArray *listaAsistenciaAlumnos;
 @property (strong, nonatomic) NSArray *listaAsistenciaBeneficiarios;
 
