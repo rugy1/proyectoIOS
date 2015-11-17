@@ -42,6 +42,8 @@
     self.vacioAlumnos = [[NSArray alloc] initWithObjects:nil];
     self.vacioBenef = [[NSArray alloc] initWithObjects:nil];
     
+    
+    
 
 }
 
