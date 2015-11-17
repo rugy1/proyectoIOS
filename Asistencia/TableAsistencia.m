@@ -17,21 +17,12 @@
 
 @implementation TableAsistencia
 
-- (void)setListaAsistencia:(NSArray *)newListaAsistencia{
-    if (_listaAsistencia != newListaAsistencia) {
-        _listaAsistencia = newListaAsistencia;
-        
-    }
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.stringAsistenciaProyecto;
 
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -42,14 +33,34 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return self.listaAsistencia.count;
+    if (section==0)
+    {
+        return [self.listaAsistenciaAlumnos count];
+    }
+    else{
+        return [self.listaAsistenciaBeneficiarios count];
+    }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if(section == 0){
+        if ([self.listaAsistenciaAlumnos count]==0) {
+            return nil;
+        }
+        else return @"Alumnos";
+    }
+    else{
+        if ([self.listaAsistenciaBeneficiarios count]==0) {
+            return nil;
+        }
+        else return @"Beneficiarios";
+    }
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -67,22 +78,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"celdaAsistencia" forIndexPath:indexPath];
-    
-    NSString *persona = self.listaAsistencia[indexPath.row];
-    cell.textLabel.text = [persona description];
 
+    if (indexPath.section==0) {
+        NSString *theCellData = [self.listaAsistenciaAlumnos objectAtIndex:indexPath.row];
+        cell.textLabel.text = [theCellData description];
+    }
+    else {
+        NSString *theCellData2 = [self.listaAsistenciaBeneficiarios objectAtIndex:indexPath.row];
+        cell.textLabel.text = [theCellData2 description];
+    }
     return cell;
 }
 
 
 #pragma mark - Navigation
-
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      if ([[segue identifier] isEqualToString:@"añadiendo"]) {
          [[segue destinationViewController] setStringAsistenciaProyecto:self.title];
          [[segue destinationViewController] setAlumnos:self.listaAsistenciaAlumnos];
          [[segue destinationViewController] setBeneficiarios:self.listaAsistenciaBeneficiarios];
-         //[[segue destinationViewController] setStringAsistenciaProyecto:[proyect nombreProyecto]];
      }
      if (sender == self.saving) {
          [[segue destinationViewController] setObjetoListaAlumnos:self.listaAsistenciaAlumnos];
@@ -91,8 +105,6 @@
  }
 
 - (IBAction)unwindAñadirAlumnoBeneficiario:(UIStoryboardSegue *) segue{
-    self.listaAsistencia = self.listaAsistenciaAlumnos;
-    self.listaAsistencia = [self.listaAsistencia arrayByAddingObjectsFromArray:self.listaAsistenciaBeneficiarios];
     [self.tableView reloadData];
 }
 

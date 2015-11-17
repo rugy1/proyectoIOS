@@ -10,6 +10,9 @@
 #import <Parse/Parse.h>
 
 @interface an_adirAlumnoBeneficiario : UIViewController
+
+<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *nombreAlumno;
 @property (weak, nonatomic) IBOutlet UITextField *tipoAlumno;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saving;
@@ -17,6 +20,8 @@
 
 @property NSArray *alumnos;
 @property NSArray *beneficiarios;
+@property (weak, nonatomic) IBOutlet UIImageView *fotoAlumno;
 
+- (IBAction)foto:(id)sender;
 
 @end

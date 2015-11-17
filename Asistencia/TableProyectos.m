@@ -32,15 +32,15 @@
     self.tableView.tableHeaderView = self.labelBienvenida;
     
     
-    self.alumnosCaracol = [[NSArray alloc] initWithObjects:@"Rogelio", @"Andres", nil];
+   /* self.alumnosCaracol = [[NSArray alloc] initWithObjects:@"Rogelio", @"Andres", nil];
     self.alumnosEstrella = [[NSArray alloc] initWithObjects:@"Luis", @"Fernando", nil];
     self.benefCaracol = [[NSArray alloc] initWithObjects:@"Maria", @"Pedro", nil];
-    self.benefEstrella = [[NSArray alloc] initWithObjects:@"Ramon", @"Gaby", nil];
-    Proyectos *proyecto1 = [[Proyectos alloc] initWithNombreProyecto:@"Caracol" alumnosEncargados:_alumnosCaracol beneficiarios:_benefCaracol];
-    Proyectos *proyecto2 = [[Proyectos alloc] initWithNombreProyecto:@"Estrella" alumnosEncargados:_alumnosEstrella beneficiarios:_benefEstrella];
-    self.listaProyectos = [[NSMutableArray alloc] initWithObjects:proyecto1, proyecto2, nil];
+    self.benefEstrella = [[NSArray alloc] initWithObjects:@"Ramon", @"Gaby", nil];*/
+
     self.vacioAlumnos = [[NSArray alloc] initWithObjects:nil];
     self.vacioBenef = [[NSArray alloc] initWithObjects:nil];
+    Proyectos *proyecto1 = [[Proyectos alloc] initWithNombreProyecto:@"Caracol" alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
+    Proyectos *proyecto2 = [[Proyectos alloc] initWithNombreProyecto:@"Estrella" alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
     
     
     
@@ -81,12 +81,8 @@
     if ([[segue identifier] isEqualToString:@"showProyecto"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Proyectos *proyect = self.listaProyectos[indexPath.row];
-        NSArray *assistAlumnos = [proyect alumnosEncargados];
-        NSArray *assistBenef = [proyect beneficiarios];
-        [[segue destinationViewController] setListaAsistenciaAlumnos:assistAlumnos];
-        [[segue destinationViewController] setListaAsistenciaBeneficiarios:assistBenef];
-        assistAlumnos = [assistAlumnos arrayByAddingObjectsFromArray:assistBenef];
-        [[segue destinationViewController] setListaAsistencia:assistAlumnos];
+        [[segue destinationViewController] setListaAsistenciaAlumnos:[proyect alumnosEncargados]];
+        [[segue destinationViewController] setListaAsistenciaBeneficiarios:[proyect beneficiarios]];
         [[segue destinationViewController] setStringAsistenciaProyecto:[proyect nombreProyecto]];
         self.numberRow = indexPath.row;
     }
