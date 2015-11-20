@@ -59,17 +59,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return self.listaProyectos.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"celda" forIndexPath:indexPath];
-    
+
     Proyectos *object = self.listaProyectos[indexPath.row];
     cell.textLabel.text = [object nombreProyecto];
+
     return cell;
+    
+   
 }
 
 
@@ -100,5 +102,6 @@
     [self.listaProyectos addObject:project];
     [self.tableView reloadData];
 }
+
 
 @end

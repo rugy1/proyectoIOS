@@ -17,4 +17,5 @@
 @property (strong, nonatomic) NSArray *objetoListaAlumnos;
 @property (strong, nonatomic) NSArray *objetoListaBeneficiarios;
 
+
 @end

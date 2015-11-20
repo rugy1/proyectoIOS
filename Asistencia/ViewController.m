@@ -30,7 +30,7 @@
     if ([[segue identifier] isEqualToString:@"admin"]) {
         UINavigationController *nav = [segue destinationViewController];
         TableProyectos *tableProyectos = (TableProyectos*)nav.topViewController;
-        [tableProyectos setStringBienvenida:self.userTF.text];
+        
     }
 }
 
