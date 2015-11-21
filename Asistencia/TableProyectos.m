@@ -8,7 +8,7 @@
 
 #import "TableProyectos.h"
 #import "Proyectos.h"
-#import "TableAsistencia.h"
+#import "TableAsistencia2.h"
 
 @interface TableProyectos ()
 
@@ -82,9 +82,9 @@
     if ([[segue identifier] isEqualToString:@"showProyecto"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Proyectos *proyect = self.listaProyectos[indexPath.row];
+        [[segue destinationViewController] setStringAsistenciaProyecto:[proyect nombreProyecto]];
         [[segue destinationViewController] setListaAsistenciaAlumnos:[proyect alumnosEncargados]];
         [[segue destinationViewController] setListaAsistenciaBeneficiarios:[proyect beneficiarios]];
-        [[segue destinationViewController] setStringAsistenciaProyecto:[proyect nombreProyecto]];
         self.numberRow = indexPath.row;
     }
 }

@@ -7,6 +7,7 @@
 //
 
 #import "TableEspacios.h"
+#import "TableProyectos.h"
 
 @interface TableEspacios ()
 
@@ -48,6 +49,7 @@
     NSString *espacio = self.listaEspaciosVacios[indexPath.row];
     cell.textLabel.text = espacio;
     
+    
 
     
     return cell;
@@ -88,15 +90,19 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"showEspacio"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        self.espacioEscogido = self.listaEspaciosVacios[indexPath.row];
+        [[segue destinationViewController] setStringBienvenida:@"Hola"];
+        [[segue destinationViewController] setTitle:self.espacioEscogido];
+    }
 }
-*/
+
 
 - (IBAction)unwindAñadirEspacio:(UIStoryboardSegue *) segue{
     /*Proyectos *project = [[Proyectos alloc] initWithNombreProyecto:self.stringNewProject alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];*/

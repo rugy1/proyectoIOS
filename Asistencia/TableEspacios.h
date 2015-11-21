@@ -12,4 +12,5 @@
 @interface TableEspacios : UITableViewController
 
 @property (nonatomic, strong) NSString* stringNewEspacio;
+@property (nonatomic, strong) NSString* espacioEscogido;
 @end

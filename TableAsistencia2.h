@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) NSArray *listaAsistenciaAlumnos;
 @property (strong, nonatomic) NSArray *listaAsistenciaBeneficiarios;
-@property (nonatomic, strong) NSString* stringAsistenciaProyecto;
+@property (nonatomic, strong) NSString *stringAsistenciaProyecto;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saving;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

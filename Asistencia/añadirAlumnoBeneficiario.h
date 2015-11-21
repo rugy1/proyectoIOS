@@ -14,9 +14,10 @@
 <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nombreAlumno;
-@property (weak, nonatomic) IBOutlet UITextField *tipoAlumno;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tipoAlumno;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saving;
-@property (nonatomic, strong) NSString* stringAsistenciaProyecto;
+@property (nonatomic, strong) NSString *stringAsistenciaProyecto;
 
 @property NSArray *alumnos;
 @property NSArray *beneficiarios;
