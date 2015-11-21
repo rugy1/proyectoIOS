@@ -7,7 +7,7 @@
 //
 
 #import "añadirAlumnoBeneficiario.h"
-#import "TableAsistencia.h"
+#import "TableAsistencia2.h"
 
 @interface an_adirAlumnoBeneficiario ()
 

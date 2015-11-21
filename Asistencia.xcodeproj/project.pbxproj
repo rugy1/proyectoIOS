@@ -17,6 +17,7 @@
 		E92868FA1BF3CCAB00ABAE81 /* TableEspacios.m in Sources */ = {isa = PBXBuildFile; fileRef = E92868F91BF3CCAB00ABAE81 /* TableEspacios.m */; };
 		E92868FD1BFCF31A00ABAE81 /* añadirEspacio.m in Sources */ = {isa = PBXBuildFile; fileRef = E92868FC1BFCF31A00ABAE81 /* añadirEspacio.m */; };
 		E92869001BFD127700ABAE81 /* webView.m in Sources */ = {isa = PBXBuildFile; fileRef = E92868FF1BFD127700ABAE81 /* webView.m */; };
+		E928693D1BFFB8E400ABAE81 /* TableAsistencia2.m in Sources */ = {isa = PBXBuildFile; fileRef = E928693C1BFFB8E400ABAE81 /* TableAsistencia2.m */; };
 		E95629D81BEB231B00243B5E /* añadirProyecto.m in Sources */ = {isa = PBXBuildFile; fileRef = E95629D71BEB231B00243B5E /* añadirProyecto.m */; };
 		E95F1CA51BEA9026009F18FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95F1CA41BEA9026009F18FF /* AudioToolbox.framework */; };
 		E95F1CA71BEA902C009F18FF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95F1CA61BEA902C009F18FF /* CFNetwork.framework */; };
@@ -67,6 +68,8 @@
 		E92868FC1BFCF31A00ABAE81 /* añadirEspacio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "añadirEspacio.m"; sourceTree = "<group>"; };
 		E92868FE1BFD127700ABAE81 /* webView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webView.h; sourceTree = "<group>"; };
 		E92868FF1BFD127700ABAE81 /* webView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webView.m; sourceTree = "<group>"; };
+		E928693B1BFFB8E400ABAE81 /* TableAsistencia2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableAsistencia2.h; path = ../TableAsistencia2.h; sourceTree = "<group>"; };
+		E928693C1BFFB8E400ABAE81 /* TableAsistencia2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableAsistencia2.m; path = ../TableAsistencia2.m; sourceTree = "<group>"; };
 		E95629D61BEB231B00243B5E /* añadirProyecto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "añadirProyecto.h"; sourceTree = "<group>"; };
 		E95629D71BEB231B00243B5E /* añadirProyecto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "añadirProyecto.m"; sourceTree = "<group>"; };
 		E95F1CA41BEA9026009F18FF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -167,6 +170,8 @@
 		E92869351BFE4DBB00ABAE81 /* TablesViews */ = {
 			isa = PBXGroup;
 			children = (
+				E928693B1BFFB8E400ABAE81 /* TableAsistencia2.h */,
+				E928693C1BFFB8E400ABAE81 /* TableAsistencia2.m */,
 				E9D833A61BD95CC900FA8DD8 /* TableAsistencia.h */,
 				E9D833A71BD95CC900FA8DD8 /* TableAsistencia.m */,
 				E92868F81BF3CCAB00ABAE81 /* TableEspacios.h */,
@@ -392,6 +397,7 @@
 				E9D832EB1BD52A8400FA8DD8 /* ViewController.m in Sources */,
 				E95629D81BEB231B00243B5E /* añadirProyecto.m in Sources */,
 				E9D833A81BD95CC900FA8DD8 /* TableAsistencia.m in Sources */,
+				E928693D1BFFB8E400ABAE81 /* TableAsistencia2.m in Sources */,
 				E9D832E81BD52A8400FA8DD8 /* AppDelegate.m in Sources */,
 				E9D832E51BD52A8400FA8DD8 /* main.m in Sources */,
 				E92868FA1BF3CCAB00ABAE81 /* TableEspacios.m in Sources */,
