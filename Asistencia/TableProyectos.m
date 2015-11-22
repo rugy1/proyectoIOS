@@ -32,17 +32,43 @@
     self.tableView.tableHeaderView = self.labelBienvenida;
     
     
-   /* self.alumnosCaracol = [[NSArray alloc] initWithObjects:@"Rogelio", @"Andres", nil];
-    self.alumnosEstrella = [[NSArray alloc] initWithObjects:@"Luis", @"Fernando", nil];
-    self.benefCaracol = [[NSArray alloc] initWithObjects:@"Maria", @"Pedro", nil];
-    self.benefEstrella = [[NSArray alloc] initWithObjects:@"Ramon", @"Gaby", nil];*/
-
+   
+    
     self.vacioAlumnos = [[NSArray alloc] initWithObjects:nil];
     self.vacioBenef = [[NSArray alloc] initWithObjects:nil];
-    Proyectos *proyecto1 = [[Proyectos alloc] initWithNombreProyecto:@"Caracol" alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
-    Proyectos *proyecto2 = [[Proyectos alloc] initWithNombreProyecto:@"Estrella" alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
+    self.listaProyectos = [NSMutableArray array];
     
-    self.listaProyectos = [[NSMutableArray alloc] initWithObjects:proyecto1, proyecto2, nil];
+   
+    
+    
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Proyecto"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *proy, NSError *error) {
+        if (!error) {
+
+            // Do something with the found objects
+            for (PFObject *object in proy) {
+                NSLog(@"%@", object.objectId);
+                
+                NSString *nombreP = object[@"nombre"];
+
+                NSLog(@"%@",nombreP);
+                
+                Proyectos *proy1 = [[Proyectos alloc] initWithNombreProyecto:nombreP alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
+                
+                [self.listaProyectos  addObject:proy1];
+            }
+            
+            
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+
+    
+
 
 }
 
@@ -65,8 +91,8 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"celda" forIndexPath:indexPath];
-    
     Proyectos *object = self.listaProyectos[indexPath.row];
     cell.textLabel.text = [object nombreProyecto];
     return cell;
