@@ -20,7 +20,7 @@
 @property NSArray *benefEstrella;
 @property NSArray *vacioAlumnos;
 @property NSArray *vacioBenef;
-
+//
 
 @end
 
