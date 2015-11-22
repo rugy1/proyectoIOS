@@ -42,8 +42,7 @@
     Proyectos *proyecto1 = [[Proyectos alloc] initWithNombreProyecto:@"Caracol" alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
     Proyectos *proyecto2 = [[Proyectos alloc] initWithNombreProyecto:@"Estrella" alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
     
-    
-    
+    self.listaProyectos = [[NSMutableArray alloc] initWithObjects:proyecto1, proyecto2, nil];
 
 }
 
