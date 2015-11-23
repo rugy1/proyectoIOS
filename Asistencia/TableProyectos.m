@@ -20,6 +20,7 @@
 @property NSArray *benefEstrella;
 @property NSArray *vacioAlumnos;
 @property NSArray *vacioBenef;
+@property BOOL stafBool;
 //
 
 @end
@@ -41,7 +42,40 @@
    
     
     
+    if(self.usuarioS!=nil){
+        _stafBool = YES;
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+        NSString *oid = self.usuarioS[@"password"];
+        PFQuery *query = [PFQuery queryWithClassName:@"Staff"];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *proy, NSError *error) {
+            if (!error) {
+                
+                // Do something with the found objects
+                for (PFObject *object in proy) {
+                    NSLog(@"%@", object.objectId);
+                    
+                    NSString *nombreP = object[@"proyecto"];
+                    NSString *nombreE = object[@"Espacio"];
+                    NSString *objP = object[@"matricula"];
+                    
+                    if(objP == oid){
+                        Proyectos *proy1 = [[Proyectos alloc] initWithNombreProyecto:nombreP nombreEspacio:nombreE alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
+                    
+                        [self.listaProyectos  addObject:proy1];}
+                }
+                [self.tableView reloadData];
+                
+                
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+        
+    }
     
+
+    if(self.usuarioS==nil){
     PFQuery *query = [PFQuery queryWithClassName:@"Proyecto"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *proy, NSError *error) {
         if (!error) {
@@ -51,10 +85,11 @@
                 NSLog(@"%@", object.objectId);
                 
                 NSString *nombreP = object[@"nombre"];
+                NSString *nombreE = object[@"Espacio"];
 
                 NSLog(@"%@",nombreP);
                 
-                Proyectos *proy1 = [[Proyectos alloc] initWithNombreProyecto:nombreP alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
+                Proyectos *proy1 = [[Proyectos alloc] initWithNombreProyecto:nombreP nombreEspacio:nombreE alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
                 
                 [self.listaProyectos  addObject:proy1];
             }
@@ -66,6 +101,8 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+    
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,10 +124,13 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    if(_stafBool == YES){
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"celda" forIndexPath:indexPath];
     Proyectos *object = self.listaProyectos[indexPath.row];
     cell.textLabel.text = [object nombreProyecto];
+      cell.detailTextLabel.text = [object nombreEspacio];
     return cell;
 }
 
@@ -110,6 +150,9 @@
 }
 
 - (IBAction)unwindTableAsistencia:(UIStoryboardSegue *) segue{
+    if(_stafBool == YES){
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
     Proyectos *proyectModified = self.listaProyectos[self.numberRow];
     [proyectModified setAlumnosEncargados:self.objetoListaAlumnos];
     [proyectModified setBeneficiarios:self.objetoListaBeneficiarios];
@@ -118,7 +161,10 @@
 }
 
 - (IBAction)unwindAñadirProyecto:(UIStoryboardSegue *) segue{
-    Proyectos *project = [[Proyectos alloc] initWithNombreProyecto:self.stringNewProject alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
+    if(_stafBool == YES){
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+    Proyectos *project = [[Proyectos alloc] initWithNombreProyecto:self.stringNewProject nombreEspacio:self.stringNewProject alumnosEncargados:self.vacioAlumnos beneficiarios:self.vacioBenef];
     [self.listaProyectos addObject:project];
     [self.tableView reloadData];
 }

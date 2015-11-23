@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8BBC1C771C03000800FE2CD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BBC1C761C03000800FE2CD0 /* Main.storyboard */; };
+		8BBC1C7A1C03053600FE2CD0 /* webView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBC1C791C03053600FE2CD0 /* webView.m */; };
 		8BF9EBF21C02A93E005B993B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF9EBEC1C02A93E005B993B /* Bolts.framework */; };
 		8BF9EBF31C02A93E005B993B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF9EBED1C02A93E005B993B /* Parse.framework */; };
 		8BF9EBF41C02A93E005B993B /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF9EBEE1C02A93E005B993B /* ParseFacebookUtils.framework */; };
@@ -53,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		8BBC1C761C03000800FE2CD0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8BBC1C781C03053600FE2CD0 /* webView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webView.h; sourceTree = "<group>"; };
+		8BBC1C791C03053600FE2CD0 /* webView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webView.m; sourceTree = "<group>"; };
 		8BF9EBEC1C02A93E005B993B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		8BF9EBED1C02A93E005B993B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		8BF9EBEE1C02A93E005B993B /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 				E95F1CC11BEAC7F8009F18FF /* añadirAlumnoBeneficiario.h */,
 				E95F1CC21BEAC7F8009F18FF /* añadirAlumnoBeneficiario.m */,
 				8BBC1C761C03000800FE2CD0 /* Main.storyboard */,
+				8BBC1C781C03053600FE2CD0 /* webView.h */,
+				8BBC1C791C03053600FE2CD0 /* webView.m */,
 				E9D833A61BD95CC900FA8DD8 /* TableAsistencia.h */,
 				E9D833A71BD95CC900FA8DD8 /* TableAsistencia.m */,
 				E95629D61BEB231B00243B5E /* añadirProyecto.h */,
@@ -336,6 +341,7 @@
 			files = (
 				E9D833A51BD9527900FA8DD8 /* Proyectos.m in Sources */,
 				E95F1CC31BEAC7F8009F18FF /* añadirAlumnoBeneficiario.m in Sources */,
+				8BBC1C7A1C03053600FE2CD0 /* webView.m in Sources */,
 				E9D832EB1BD52A8400FA8DD8 /* ViewController.m in Sources */,
 				E95629D81BEB231B00243B5E /* añadirProyecto.m in Sources */,
 				E9D833A81BD95CC900FA8DD8 /* TableAsistencia.m in Sources */,

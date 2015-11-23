@@ -244,12 +244,20 @@
     if (indexPath.section==0) {
         PFObject *theCellData = [self.listaStaff objectAtIndex:indexPath.row];
         NSString *sname = theCellData[@"nombre"];
+        NSNumber *faltas = theCellData[@"faltas"];
+        NSString *myNumberInString = [faltas stringValue];
         cell.textLabel.text = sname;
+        cell.detailTextLabel.text = myNumberInString;
+
     }
     else {
        PFObject *theCellData2 = [self.listaBeneficiario objectAtIndex:indexPath.row];
         NSString *bname = theCellData2[@"nombre"];
+        NSNumber *faltas = theCellData2[@"faltas"];
+        NSString *myNumberInString = [faltas stringValue];
         cell.textLabel.text = bname;
+        cell.detailTextLabel.text = myNumberInString;
+
     }
     return cell;
 }

@@ -12,9 +12,11 @@
 
 @property(nonatomic, strong) NSString *nombreProyecto;
 @property(nonatomic, strong) NSArray *alumnosEncargados;
+@property(nonatomic, strong) NSString *nombreEspacio;
 @property NSArray *beneficiarios;
 
 - (id) initWithNombreProyecto: (NSString *) nom
+                nombreEspacio:(NSString *) esp
             alumnosEncargados: (NSArray *) alumnos
             beneficiarios: (NSArray *) beneficiarios;
 

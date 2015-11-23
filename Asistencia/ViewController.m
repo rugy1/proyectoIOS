@@ -32,6 +32,11 @@
         TableProyectos *tableProyectos = (TableProyectos*)nav.topViewController;
         [tableProyectos setStringBienvenida:self.userTF.text];
     }
+    if ([[segue identifier] isEqualToString:@"staff"]) {
+        UINavigationController *nav = [segue destinationViewController];
+        TableProyectos *tableProyectos = (TableProyectos*)nav.topViewController;
+        [tableProyectos setUsuarioS:self.userTipo];
+    }
 }
 
 - (IBAction)iniciarSesion:(id)sender {
@@ -46,25 +51,30 @@
         if (!error) {
             // The find succeeded.;
             
-            if(!objects.count==0){
-                PFObject *nU = [objects objectAtIndex:0];
-                NSString *nameU = nU[@"nombre"];
-                
-                if ([nameU  isEqual: @"Staff"]) {
+            
+            
+            for (PFObject *usuarioF in objects) {
+                NSString *sNombre = usuarioF[@"nombre"] ;
+                if ([sNombre isEqual: @"Staff"]) {
+                    self.userTipo = usuarioF;
                     [self performSegueWithIdentifier:@"staff" sender:self];
                 }
-                else{
-                    [self performSegueWithIdentifier:@"admin" sender:self];}}
+                else if([sNombre isEqual: @"Administrador"]){
+
+                    [self performSegueWithIdentifier:@"admin" sender:self];
+                
+                }}
+            }
+            
+            
+        
+               
             // Do something with the found objects
-        } else {
+        else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
     
-    
-    if ([self.userTF.text isEqualToString:@"user"] && [self.psswdTF.text isEqualToString:@"password"]) {
-        [self performSegueWithIdentifier:@"user" sender:self];
-    }
 }
 @end

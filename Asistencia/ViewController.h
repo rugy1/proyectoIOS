@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString* stringUsername;
 @property (nonatomic, strong) NSString* stringPassword;
 @property (nonatomic, strong) PFObject* userAtIndex;
+@property (nonatomic, strong) PFObject* userTipo;
 
 
 @end
