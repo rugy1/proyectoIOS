@@ -42,6 +42,18 @@
             
             // Do something with the found objects
             for (PFObject *object in benef) {
+                 NSString *bId = object.objectId;
+                
+                PFQuery *query4 = [PFQuery queryWithClassName:@"Beneficiario"];
+                
+                // Retrieve the object by id
+                [query4 getObjectInBackgroundWithId:bId
+                                              block:^(PFObject *benef, NSError *error) {
+                                                  benef[@"presente"] = @NO;
+                                                  [benef saveInBackground];
+                                              }];
+                
+                
                 
                 [self.listaBeneficiario  addObject:object];
             }
@@ -61,6 +73,19 @@
             
             // Do something with the found objects
             for (PFObject *object in staff) {
+                
+                NSString *sId = object.objectId;
+               
+                PFQuery *query3 = [PFQuery queryWithClassName:@"Staff"];
+                
+                // Retrieve the object by id
+                [query3 getObjectInBackgroundWithId:sId
+                block:^(PFObject *stafff, NSError *error) {
+                stafff[@"presente"] = @NO;
+                [stafff saveInBackground];
+                                              }];
+                
+                
                 
                 [self.listaStaff  addObject:object];
             }
@@ -97,7 +122,7 @@
         return [self.listaStaff count];
     }
     else{
-        return [self.listaBeneficiario count];
+        return ([self.listaBeneficiario count]);
     }
 }
 
@@ -121,39 +146,93 @@
     
     UITableViewCell *tableCell = [tableView cellForRowAtIndexPath:indexPath];
     BOOL isSelected = (tableCell.accessoryType == UITableViewCellAccessoryCheckmark);
+    NSString *sId, *bId;
     
-    PFObject *theCellData2 = [self.listaBeneficiario objectAtIndex:indexPath.row];
-    NSString *bId = theCellData2.objectId;
+    if(indexPath.section == 0){
+    
+        PFObject *theCellData3 = [self.listaStaff objectAtIndex:indexPath.row];
+        sId = theCellData3.objectId;
+    }else{
+    
+        PFObject *theCellData2 = [self.listaBeneficiario objectAtIndex:indexPath.row];
+        bId = theCellData2.objectId;
+        
+
+    }
+    
+
 
     
     
     if (isSelected) {
+        
+        
+        
         tableCell.accessoryType = UITableViewCellAccessoryNone;
         
-        PFQuery *query = [PFQuery queryWithClassName:@"Beneficiario"];
+        if(indexPath.section == 0){
+            
+            PFQuery *query2 = [PFQuery queryWithClassName:@"Staff"];
+            
+            // Retrieve the object by id
+            [query2 getObjectInBackgroundWithId:sId
+                                          block:^(PFObject *stafff, NSError *error) {
+                                              stafff[@"presente"] = @NO;
+                                              [stafff saveInBackground];
+                                          }];
+            
+           
+        }else{
+            PFQuery *query = [PFQuery queryWithClassName:@"Beneficiario"];
+            // Retrieve the object by id
+            [query getObjectInBackgroundWithId:bId
+                                         block:^(PFObject *benef, NSError *error) {
+                                             benef[@"presente"] = @NO;
+                                             [benef saveInBackground];
+                                         }];
+            
+        }
+      
         
-        // Retrieve the object by id
-        [query getObjectInBackgroundWithId:bId
-        block:^(PFObject *benef, NSError *error) {
-        benef[@"presente"] = @NO;
-        [benef saveInBackground];
-        }];
-       
+
+
         
 
     }
     else {
         tableCell.accessoryType = UITableViewCellAccessoryCheckmark;
         
-        PFQuery *query = [PFQuery queryWithClassName:@"Beneficiario"];
         
-        // Retrieve the object by id
-        [query getObjectInBackgroundWithId:bId
-        block:^(PFObject *benef, NSError *error) {
-        benef[@"presente"] = @YES;
-        [benef saveInBackground];
-                                     }];
+        if(indexPath.section == 0){
+            
+            PFQuery *query2 = [PFQuery queryWithClassName:@"Staff"];
+            
+            // Retrieve the object by id
+            [query2 getObjectInBackgroundWithId:sId
+                                          block:^(PFObject *stafff, NSError *error) {
+                                              stafff[@"presente"] = @YES;
+                                              [stafff saveInBackground];
+                                          }];
+            
+            
+            
+        }else{
+            
+            PFQuery *query = [PFQuery queryWithClassName:@"Beneficiario"];
+            
+            // Retrieve the object by id
+            [query getObjectInBackgroundWithId:bId
+                                         block:^(PFObject *benef, NSError *error) {
+                                             benef[@"presente"] = @YES;
+                                             [benef saveInBackground];
+                                         }];
+            
+            
+        }
         
+        
+        
+     
         
         
     }
@@ -225,7 +304,39 @@
 
         
     }
-     
+    
+    
+    
+    for (int i=0; i<self.listaStaff.count; i++) {
+        
+        PFObject *theCellData2 = [self.listaStaff objectAtIndex:i];
+        NSNumber *bFaltas = theCellData2[@"faltas"];
+        NSString *bId = theCellData2.objectId;
+        
+        
+        
+        PFQuery *query2 = [PFQuery queryWithClassName:@"Staff"];
+        
+        
+        [query2 getObjectInBackgroundWithId:bId
+                                     block:^(PFObject *staff, NSError *error) {
+                                         if([staff[@"presente"] isEqual:@YES]){
+                                             staff[@"faltas"] = bFaltas;}
+                                         else{
+                                             NSInteger newRow = [bFaltas integerValue];
+                                             newRow++;
+                                             NSNumber *myNum = [NSNumber numberWithInteger:newRow];
+                                             [staff[@"fechas"]addObject:self.fechaAsistencia.title];
+                                             staff[@"faltas"] = myNum;
+                                             newRow=0;
+                                         }
+                                         [staff saveInBackground];
+                                     }];
+        
+        
+        
+    }
+    [self performSegueWithIdentifier:@"regresar2" sender:self];
     
         
 
