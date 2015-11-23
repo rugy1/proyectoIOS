@@ -13,6 +13,7 @@
 
 @interface TableAsistencia ()
 @property NSMutableArray *listaBeneficiario;
+@property NSMutableArray *listaStaff;
 
 @end
 
@@ -24,6 +25,7 @@
     self.title = self.stringAsistenciaProyecto;
     //
     self.listaBeneficiario= [NSMutableArray array];
+      self.listaStaff= [NSMutableArray array];
     
     NSDate *currDate = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
@@ -52,9 +54,28 @@
         }
     }];
     
+    PFQuery *query2 = [PFQuery queryWithClassName:@"Staff"];
+    [query2 whereKey:@"proyecto" equalTo:self.stringAsistenciaProyecto];
+    [query2 findObjectsInBackgroundWithBlock:^(NSArray *staff, NSError *error) {
+        if (!error) {
+            
+            // Do something with the found objects
+            for (PFObject *object in staff) {
+                
+                [self.listaStaff  addObject:object];
+            }
+            [self.tableView reloadData];
+            
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
     
     
     
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,7 +94,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section==0)
     {
-        return [self.listaAsistenciaAlumnos count];
+        return [self.listaStaff count];
     }
     else{
         return [self.listaBeneficiario count];
@@ -82,7 +103,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if(section == 0){
-        if ([self.listaAsistenciaAlumnos count]==0) {
+        if ([self.listaStaff count]==0) {
             return nil;
         }
         else return @"Alumnos";
@@ -142,8 +163,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"celdaAsistencia" forIndexPath:indexPath];
 
     if (indexPath.section==0) {
-        NSString *theCellData = [self.listaAsistenciaAlumnos objectAtIndex:indexPath.row];
-        cell.textLabel.text = [theCellData description];
+        PFObject *theCellData = [self.listaStaff objectAtIndex:indexPath.row];
+        NSString *sname = theCellData[@"nombre"];
+        cell.textLabel.text = sname;
     }
     else {
        PFObject *theCellData2 = [self.listaBeneficiario objectAtIndex:indexPath.row];
@@ -203,7 +225,7 @@
 
         
     }
-    
+     
     
         
 

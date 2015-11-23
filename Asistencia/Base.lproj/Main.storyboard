@@ -26,13 +26,8 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Key-32.png" translatesAutoresizingMaskIntoConstraints="NO" id="tZa-NR-rKy">
                                         <rect key="frame" x="39" y="227" width="34" height="38"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="En1-We-sXj">
-                                        <rect key="frame" x="92" y="181" width="175" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Usuario" minimumFontSize="17" background="d78308_file" translatesAutoresizingMaskIntoConstraints="NO" id="hky-bC-ZsR">
-                                        <rect key="frame" x="92" y="231" width="174" height="30"/>
+                                        <rect key="frame" x="97" y="185" width="174" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -58,6 +53,11 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="d78308_file" translatesAutoresizingMaskIntoConstraints="NO" id="h4N-bm-Voa">
                                         <rect key="frame" x="130" y="30" width="98" height="100"/>
                                     </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="En1-We-sXj">
+                                        <rect key="frame" x="96" y="235" width="175" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -69,6 +69,7 @@
                         <outlet property="psswdTF" destination="En1-We-sXj" id="aY5-pY-tEM"/>
                         <outlet property="userTF" destination="hky-bC-ZsR" id="73l-Sc-0aX"/>
                         <segue destination="f7s-W7-Jqq" kind="presentation" identifier="admin" id="eXB-Zs-BLb"/>
+                        <segue destination="Cbp-U9-5Uy" kind="presentation" identifier="staff" id="bF3-G4-Xh6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -84,7 +85,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qxa-hT-Y2V">
-                            <rect key="frame" x="0.0" y="130" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="66" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -92,7 +93,7 @@
                         </label>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celda" id="rJ4-ox-meG">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rJ4-ox-meG" id="jl8-Wm-ZV8">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -206,20 +207,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="5j9-Wy-4F2">
-                            <rect key="frame" x="0.0" y="130" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="66" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem title="Fecha" id="1ct-PV-oYN"/>
                                 <barButtonItem title="Guardar" id="VcH-Fv-3rU">
                                     <connections>
                                         <action selector="guardarAsistencia:" destination="Cbp-U9-5Uy" id="3Ow-Fu-fBk"/>
+                                        <segue destination="sRH-7b-lIh" kind="presentation" id="kPJ-A0-SiV"/>
                                     </connections>
                                 </barButtonItem>
                             </items>
                         </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdaAsistencia" id="BNS-2l-rxG">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BNS-2l-rxG" id="gtD-n0-yg6">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -234,7 +236,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="IW3-ke-UVN">
-                        <barButtonItem key="leftBarButtonItem" title="Guardar" id="HAt-gA-Xg4">
+                        <barButtonItem key="leftBarButtonItem" title="Proyectos" id="HAt-gA-Xg4">
                             <connections>
                                 <segue destination="lMI-kv-Bh6" kind="unwind" unwindAction="unwindTableAsistencia:" id="irH-mf-WMp"/>
                             </connections>
@@ -255,7 +257,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glz-Fk-53q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lMI-kv-Bh6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="713.5" y="-467.5"/>
+            <point key="canvasLocation" x="781.5" y="-467.5"/>
         </scene>
         <!--Agregar-->
         <scene sceneID="nN1-eT-b3a">
@@ -392,4 +394,8 @@
         <image name="Users-32.png" width="32" height="32"/>
         <image name="d78308_file" width="700" height="700"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kPJ-A0-SiV"/>
+        <segue reference="bF3-G4-Xh6"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -41,10 +41,20 @@
     [query whereKey:@"username" equalTo:self.userTF.text];
     [query whereKey:@"password" equalTo:self.psswdTF.text];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+      
+       
         if (!error) {
             // The find succeeded.;
+            
             if(!objects.count==0){
-                [self performSegueWithIdentifier:@"admin" sender:self];}
+                PFObject *nU = [objects objectAtIndex:0];
+                NSString *nameU = nU[@"nombre"];
+                
+                if ([nameU  isEqual: @"Staff"]) {
+                    [self performSegueWithIdentifier:@"staff" sender:self];
+                }
+                else{
+                    [self performSegueWithIdentifier:@"admin" sender:self];}}
             // Do something with the found objects
         } else {
             // Log details of the failure
@@ -53,7 +63,7 @@
     }];
     
     
-    if ([self.userTF.text isEqualToString:@"user"] && [self.psswdTF.text isEqualToString:@"user"]) {
+    if ([self.userTF.text isEqualToString:@"user"] && [self.psswdTF.text isEqualToString:@"password"]) {
         [self performSegueWithIdentifier:@"user" sender:self];
     }
 }
