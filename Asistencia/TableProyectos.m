@@ -58,7 +58,7 @@
                 
                 [self.listaProyectos  addObject:proy1];
             }
-            
+            [self.tableView reloadData];
             
             
         } else {
@@ -66,10 +66,6 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-
-    
-
-
 }
 
 - (void)didReceiveMemoryWarning {
