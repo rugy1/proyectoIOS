@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -79,11 +80,11 @@
             <objects>
                 <tableViewController title="TableProyectos" id="sRH-7b-lIh" customClass="TableProyectos" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="du4-1t-eZG">
-                        <rect key="frame" x="0.0" y="64" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qxa-hT-Y2V">
-                            <rect key="frame" x="0.0" y="66" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="130" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,8 +92,10 @@
                         </label>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celda" id="rJ4-ox-meG">
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rJ4-ox-meG" id="jl8-Wm-ZV8">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -199,13 +202,27 @@
             <objects>
                 <tableViewController id="Cbp-U9-5Uy" customClass="TableAsistencia" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="O30-7v-wid">
-                        <rect key="frame" x="0.0" y="64" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="5j9-Wy-4F2">
+                            <rect key="frame" x="0.0" y="130" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="Fecha" id="1ct-PV-oYN"/>
+                                <barButtonItem title="Guardar" id="VcH-Fv-3rU">
+                                    <connections>
+                                        <action selector="guardarAsistencia:" destination="Cbp-U9-5Uy" id="3Ow-Fu-fBk"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdaAsistencia" id="BNS-2l-rxG">
+                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BNS-2l-rxG" id="gtD-n0-yg6">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -231,13 +248,14 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="fechaAsistencia" destination="1ct-PV-oYN" id="5W3-fH-Oo9"/>
                         <outlet property="saving" destination="HAt-gA-Xg4" id="bvE-v4-0KB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glz-Fk-53q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lMI-kv-Bh6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="876.5" y="-418.5"/>
+            <point key="canvasLocation" x="713.5" y="-467.5"/>
         </scene>
         <!--Agregar-->
         <scene sceneID="nN1-eT-b3a">
@@ -260,6 +278,9 @@
                                             <segment title="Staff"/>
                                             <segment title="Beneficiario"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="segmentedAction:" destination="9Dm-tq-Cb1" eventType="valueChanged" id="qXR-Pt-dK0"/>
+                                        </connections>
                                     </segmentedControl>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUD-vf-mDg">
                                         <rect key="frame" x="51" y="342" width="240" height="128"/>
@@ -330,9 +351,15 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="apellidoAlumno" destination="Yqo-MS-Ftu" id="lY1-kj-BZK"/>
                         <outlet property="fotoAlumno" destination="QUD-vf-mDg" id="K0x-mp-ax3"/>
+                        <outlet property="matriculaAlumno" destination="xLy-Jp-Y7G" id="1dq-8H-3el"/>
                         <outlet property="nombreAlumno" destination="A6p-E3-0Vo" id="OLv-Yq-CYb"/>
                         <outlet property="saving" destination="LIX-Lb-g6Y" id="hNL-P6-U5h"/>
+                        <outlet property="segmentedStaffBen" destination="Ov0-U7-Bs1" id="7zZ-1t-kRM"/>
+                        <outlet property="tfApellido" destination="HJF-UW-pAA" id="8sS-kB-KV0"/>
+                        <outlet property="tfMatricula" destination="ceE-eN-MX6" id="4av-qI-afh"/>
+                        <outlet property="tfNombre" destination="A6p-E3-0Vo" id="MfV-vl-Yqx"/>
                         <outlet property="tipoAlumno" destination="HJF-UW-pAA" id="oBe-j8-8dM"/>
                     </connections>
                 </viewController>

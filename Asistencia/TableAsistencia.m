@@ -12,6 +12,7 @@
 #import "añadirAlumnoBeneficiario.h"
 
 @interface TableAsistencia ()
+@property NSMutableArray *listaBeneficiario;
 
 @end
 
@@ -22,6 +23,38 @@
     [super viewDidLoad];
     self.title = self.stringAsistenciaProyecto;
     //
+    self.listaBeneficiario= [NSMutableArray array];
+    
+    NSDate *currDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"dd.MM.YY"];
+    NSString *dateString = [dateFormatter stringFromDate:currDate];
+    self.fechaAsistencia.title = dateString;
+    
+    
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Beneficiario"];
+    [query whereKey:@"proyecto" equalTo:self.stringAsistenciaProyecto];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *benef, NSError *error) {
+        if (!error) {
+            
+            // Do something with the found objects
+            for (PFObject *object in benef) {
+                
+                [self.listaBeneficiario  addObject:object];
+            }
+            [self.tableView reloadData];
+            
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +76,7 @@
         return [self.listaAsistenciaAlumnos count];
     }
     else{
-        return [self.listaAsistenciaBeneficiarios count];
+        return [self.listaBeneficiario count];
     }
 }
 
@@ -55,7 +88,7 @@
         else return @"Alumnos";
     }
     else{
-        if ([self.listaAsistenciaBeneficiarios count]==0) {
+        if ([self.listaBeneficiario count]==0) {
             return nil;
         }
         else return @"Beneficiarios";
@@ -68,11 +101,40 @@
     UITableViewCell *tableCell = [tableView cellForRowAtIndexPath:indexPath];
     BOOL isSelected = (tableCell.accessoryType == UITableViewCellAccessoryCheckmark);
     
+    PFObject *theCellData2 = [self.listaBeneficiario objectAtIndex:indexPath.row];
+    NSString *bId = theCellData2.objectId;
+
+    
+    
     if (isSelected) {
         tableCell.accessoryType = UITableViewCellAccessoryNone;
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Beneficiario"];
+        
+        // Retrieve the object by id
+        [query getObjectInBackgroundWithId:bId
+        block:^(PFObject *benef, NSError *error) {
+        benef[@"presente"] = @NO;
+        [benef saveInBackground];
+        }];
+       
+        
+
     }
     else {
         tableCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Beneficiario"];
+        
+        // Retrieve the object by id
+        [query getObjectInBackgroundWithId:bId
+        block:^(PFObject *benef, NSError *error) {
+        benef[@"presente"] = @YES;
+        [benef saveInBackground];
+                                     }];
+        
+        
+        
     }
 }
 
@@ -84,8 +146,9 @@
         cell.textLabel.text = [theCellData description];
     }
     else {
-        NSString *theCellData2 = [self.listaAsistenciaBeneficiarios objectAtIndex:indexPath.row];
-        cell.textLabel.text = [theCellData2 description];
+       PFObject *theCellData2 = [self.listaBeneficiario objectAtIndex:indexPath.row];
+        NSString *bname = theCellData2[@"nombre"];
+        cell.textLabel.text = bname;
     }
     return cell;
 }
@@ -108,4 +171,44 @@
     [self.tableView reloadData];
 }
 
+- (IBAction)guardarAsistencia:(id)sender {
+    
+   
+    for (int i=0; i<self.listaBeneficiario.count; i++) {
+        
+        PFObject *theCellData2 = [self.listaBeneficiario objectAtIndex:i];
+        NSNumber *bFaltas = theCellData2[@"faltas"];
+        NSString *bId = theCellData2.objectId;
+        
+        
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Beneficiario"];
+        
+        
+        [query getObjectInBackgroundWithId:bId
+        block:^(PFObject *benef, NSError *error) {
+                                         if([benef[@"presente"] isEqual:@YES]){
+                                             benef[@"faltas"] = bFaltas;}
+                                         else{
+                                             NSInteger newRow = [bFaltas integerValue];
+                                             newRow++;
+                                             NSNumber *myNum = [NSNumber numberWithInteger:newRow];
+                                             [benef[@"fechas"]addObject:self.fechaAsistencia.title];
+                                             benef[@"faltas"] = myNum;
+                                             newRow=0;
+                                         }
+                                         [benef saveInBackground];
+                                     }];
+
+
+        
+    }
+    
+    
+        
+
+
+    
+    
+}
 @end

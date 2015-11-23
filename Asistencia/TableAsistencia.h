@@ -18,6 +18,8 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saving;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *fechaAsistencia;
+- (IBAction)guardarAsistencia:(id)sender;
 
 
 
